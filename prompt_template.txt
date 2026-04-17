@@ -1,26 +1,17 @@
-Help me plan a fun and engaging landing page for our Cat Supply Store (OctoCat Supply) that cross-sells cat products to {{.CompanyName}} employees and customers.
+Write detailed specifications for a fun, engaging landing page for our Cat Supply Store (OctoCat Supply) that cross-sells cat products to {{.CompanyName}} employees and customers.
 
 ## Context about {{.CompanyName}}:
 - Website: {{.CompanyURL}}
 - What they do: {{.CompanyDescription}}
 - Industry: {{.Industry}}
 
-## Your task:
-Design a landing page that playfully connects {{.CompanyName}}'s business with cat ownership. The page should:
+## Requirements:
+- Clever, punny headline connecting {{.CompanyName}}'s industry to cats
+- Hero section with engaging copy that speaks to {{.CompanyName}} people as cat owners
+- 3-4 featured cat products with witty names tied to their business
+- A call-to-action referencing their business
+- Tone: professional but playful and shareable
 
-1. **Headline**: Create a clever, punny headline that relates {{.CompanyName}}'s industry to cats (e.g., if they're in music streaming, something like "Your cats deserve a purrfect playlist of products")
+Take a screenshot of the landing page once created.
 
-2. **Hero Section**: Write engaging copy that speaks to {{.CompanyName}} employees/customers as cat owners, making relatable jokes about their industry
-
-3. **Featured Products**: Suggest 3-4 cat products that humorously tie into what {{.CompanyName}} does:
-   - Each product should have a witty name related to their business
-   - Include a fun description connecting the product to their industry
-   - Keep it lighthearted and professional
-
-4. **Call-to-Action**: A clever CTA that references their business
-
-5. **Tone**: Professional but playful, showing we understand both their business AND cat owners
-
-Make it memorable and shareable - something that would make a {{.CompanyName}} employee smile and want to show their coworkers!
-
-Craete a Draft GitHub issue with this plan and specifications.
+Create a draft GitHub issue with the full specifications.

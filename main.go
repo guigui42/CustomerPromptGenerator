@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"os"
 	"os/exec"
@@ -88,14 +89,19 @@ func main() {
 }
 
 func researchCompany(companyName string) (*CompanyInfo, error) {
+	ctx := context.Background()
+
 	client := copilot.NewClient(nil)
-	if err := client.Start(); err != nil {
+	if err := client.Start(ctx); err != nil {
 		return nil, fmt.Errorf("failed to start Copilot client: %w", err)
 	}
 	defer client.Stop()
 
-	session, err := client.CreateSession(&copilot.SessionConfig{
+	session, err := client.CreateSession(ctx, &copilot.SessionConfig{
 		Model: "gpt-4.1",
+		OnPermissionRequest: func(request copilot.PermissionRequest, invocation copilot.PermissionInvocation) (copilot.PermissionRequestResult, error) {
+			return copilot.PermissionRequestResult{Kind: "approved"}, nil
+		},
 	})
 	if err != nil {
 		return nil, fmt.Errorf("failed to create session: %w", err)
@@ -113,7 +119,7 @@ COMPANY_URL: <url>
 DESCRIPTION: <description>
 INDUSTRY: <industry>`, companyName)
 
-	response, err := session.SendAndWait(copilot.MessageOptions{Prompt: prompt}, 0)
+	response, err := session.SendAndWait(ctx, copilot.MessageOptions{Prompt: prompt})
 	if err != nil {
 		return nil, fmt.Errorf("failed to get response: %w", err)
 	}
