@@ -7,26 +7,35 @@ Built for GitHub Solutions Engineers to quickly create personalized demo content
 ## Prerequisites
 
 - **GitHub Copilot CLI** installed and authenticated ([Installation guide](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli))
-- **Go 1.21+** (for building from source)
+- **Go 1.21+** (only needed for building from source)
 
 ## Installation
 
+### Option 1: Homebrew (macOS)
+
 ```bash
-# Clone and build
+brew tap guigui42/tap
+brew install customerpromptgenerator
+```
+
+### Option 2: Build from Source
+
+```bash
+git clone https://github.com/guigui42/CustomerPromptGenerator.git
 cd CustomerPromptGenerator
-go build -o CustomerPromptGenerator .
+go build -o customerpromptgenerator .
 ```
 
 ## Usage
 
 ```bash
-./CustomerPromptGenerator "<company-name>"
+customerpromptgenerator "<company-name>"
 ```
 
 ### Example
 
 ```bash
-./CustomerPromptGenerator "Spotify"
+customerpromptgenerator "Spotify"
 ```
 
 Output:
