@@ -99,9 +99,7 @@ func researchCompany(companyName string) (*CompanyInfo, error) {
 
 	session, err := client.CreateSession(ctx, &copilot.SessionConfig{
 		Model: "gpt-4.1",
-		OnPermissionRequest: func(request copilot.PermissionRequest, invocation copilot.PermissionInvocation) (copilot.PermissionRequestResult, error) {
-			return copilot.PermissionRequestResult{Kind: "approved"}, nil
-		},
+		OnPermissionRequest: copilot.PermissionHandler.ApproveAll,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("failed to create session: %w", err)
@@ -119,17 +117,27 @@ COMPANY_URL: <url>
 DESCRIPTION: <description>
 INDUSTRY: <industry>`, companyName)
 
-	response, err := session.SendAndWait(ctx, copilot.MessageOptions{Prompt: prompt})
+	response, err := session.SendPromptAndWait(ctx, prompt)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get response: %w", err)
 	}
 
-	if response == nil || response.Data.Content == nil {
+	if response == nil {
 		return nil, fmt.Errorf("empty response from Copilot")
 	}
 
+	// Extract content from the response
+	var responseContent string
+	if data, ok := response.Data.(*copilot.AssistantMessageData); ok {
+		responseContent = data.Content
+	}
+
+	if responseContent == "" {
+		return nil, fmt.Errorf("empty response content from Copilot")
+	}
+
 	// Parse the response
-	info := parseCompanyResponse(*response.Data.Content, companyName)
+	info := parseCompanyResponse(responseContent, companyName)
 	return info, nil
 }
 
