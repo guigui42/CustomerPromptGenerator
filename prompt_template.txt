@@ -12,6 +12,9 @@ Write detailed specifications for a fun, engaging landing page for our Cat Suppl
 - A call-to-action referencing their business
 - Tone: professional but playful and shareable
 
-Take a screenshot of the landing page once created.
+## Important:
+- Create a brand NEW, standalone landing page (e.g. a new file/route). Do NOT modify or overwrite the existing landing page or home page.
+
+Take a screenshot of the new landing page once created.
 
 Create a draft GitHub issue with the full specifications.
