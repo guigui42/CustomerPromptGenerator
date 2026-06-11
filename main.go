@@ -45,7 +45,13 @@ Design a landing page that playfully connects {{.CompanyName}}'s business with c
 
 5. **Tone**: Professional but playful, showing we understand both their business AND cat owners
 
+**Important**: Create a brand NEW, standalone landing page (e.g. a new file/route). Do NOT modify or overwrite the existing landing page or home page.
+
 Make it memorable and shareable - something that would make a {{.CompanyName}} employee smile and want to show their coworkers!
+
+Take a screenshot of the new landing page once created.
+
+Create a draft GitHub issue with the full specifications.
 `
 
 func main() {
